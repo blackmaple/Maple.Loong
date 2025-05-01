@@ -38,7 +38,7 @@ namespace Maple.Loong.Windows
 
         protected override async ValueTask LoadGameDataAsync()
         {
-            Cache = await this.UITaskAsync(static (p) => new GameReourceCache(p)).ConfigureAwait(false);
+            Cache = await this.MonoTaskAsync(static (p) => new GameReourceCache(p)).ConfigureAwait(false);
             //   await this.MonoTaskAsync(static (p, @this) => @this.LoadGameMetadata(), this).ConfigureAwait(false);
 
         }

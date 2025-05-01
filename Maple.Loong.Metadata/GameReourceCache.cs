@@ -24,7 +24,7 @@ namespace Maple.Loong.Metadata
 
         public GameSkillDisplayDTOEX[] SKILL_DATA_BASE { get; }
         public GameSkillDisplayDTOEX[] SUMMON_SKILL_DATA_BASE { get; }
-        public GameSkillDisplayDTOEX[] SKILL_DATA_BASE_LIST { get; }
+        //public GameSkillDisplayDTOEX[] SKILL_DATA_BASE_LIST { get; }
 
 
         public GameValueInfoDTOEX[] Character_Tag { get; }
@@ -35,6 +35,7 @@ namespace Maple.Loong.Metadata
             SpinWait.SpinUntil(() => GameDataController.Ptr_GameDataController.INSTANCE.IsNotNull());
             this.Ptr_GameDataController = GameDataController.Ptr_GameDataController.INSTANCE;
 
+            this.FOOD_DATA_BASE = [.. LoadItems(this.Ptr_GameDataController.FOOD_DATA_BASE.AsEnumerable())];
 
             this.WEAPON_DATA_BASE = [.. LoadItems(this.Ptr_GameDataController.WEAPON_DATA_BASE.AsEnumerable())];
             this.ARMOR_DATA_BASE = [.. LoadItems(this.Ptr_GameDataController.ARMOR_DATA_BASE.AsEnumerable())];
@@ -42,11 +43,10 @@ namespace Maple.Loong.Metadata
             this.SHOES_DATA_BASE = [.. LoadItems(this.Ptr_GameDataController.SHOES_DATA_BASE.AsEnumerable())];
             this.MED_DATA_BASE = [.. LoadItems(this.Ptr_GameDataController.MED_DATA_BASE.AsEnumerable())];
             this.HORSE_DATA_BASE = [.. LoadItems(this.Ptr_GameDataController.HORSE_DATA_BASE.AsEnumerable())];
-            this.FOOD_DATA_BASE = [.. LoadItems(this.Ptr_GameDataController.FOOD_DATA_BASE.AsEnumerable())];
 
             this.SKILL_DATA_BASE = [.. LoadSkills(this.Ptr_GameDataController.KUNGFU_SKILL_DATA_BASE.AsEnumerable())];
             this.SUMMON_SKILL_DATA_BASE = [.. LoadSkills(this.Ptr_GameDataController.SUMMON_SKILL_DATA_BASE.AsEnumerable())];
-            this.SKILL_DATA_BASE_LIST = [.. LoadSkillList()];
+            //this.SKILL_DATA_BASE_LIST = [.. LoadSkillList()];
 
 
             this.Character_Tag = [.. LoadCharacterTags()];
@@ -112,7 +112,7 @@ namespace Maple.Loong.Metadata
                     var name = skill.NAME.ToString();
                     var desc = skill.DESCRIBE.ToString();
                     var fullName = skill.GET_NAME(false).ToString();
-                    var fullDesc = skill.TYPE_DESCRIBE().ToString();
+                    var fullDesc = string.Empty;// skill.TYPE_DESCRIBE().ToString();
                     var type = skill.TYPE.ToString();
                     this.Logger.LogInformation("skillid:{id},name:{name} desc:{desc},fullname{fullname},fulldesc:{fulldesc},type:{type}", skillId, name, desc, fullName, fullDesc, type);
                     yield return new GameSkillDisplayDTOEX() { ObjectId = skillId, DisplayName = name, DisplayDesc = fullDesc, DisplayCategory = type, };
@@ -125,10 +125,14 @@ namespace Maple.Loong.Metadata
             {
                 foreach (var database in this.Ptr_GameDataController.KUNGFU_SKILL_DATA_LIST.AsEnumerable())
                 {
-                    foreach (var skill in LoadSkills(database.AsEnumerable()))
+                    if (database.IsNotNull())
                     {
-                        yield return skill;
+                        foreach (var skill in LoadSkills(database.AsEnumerable()))
+                        {
+                            yield return skill;
+                        }
                     }
+
                 }
             }
         }
