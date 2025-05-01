@@ -1,3 +1,5 @@
+using Maple.MonoGameAssistant.Core;
+
 namespace Maple.Loong.Metadata
 {
     /// <summary>
@@ -17,7 +19,7 @@ namespace Maple.Loong.Metadata
 
             public static implicit operator Ptr_EquipmentData(System.IntPtr ptr) => new Ptr_EquipmentData(ptr);
             public static implicit operator System.IntPtr(Ptr_EquipmentData ptr) => ptr.m_Pointer;
-            public static implicit operator bool (Ptr_EquipmentData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
+            public static implicit operator bool(Ptr_EquipmentData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
         }
 
         /// <summary>
@@ -125,26 +127,26 @@ namespace Maple.Loong.Metadata
             ///   System.Void .ctor()
             /// </summary>
             /// <returns>struct System.Void</returns>
-             /*
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial void CTOR(); 
+            /*
+           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+           public partial void CTOR(); 
 */
             /// <summary>
             ///   HeroSpeAddData GetBaseAddData()
             /// </summary>
             /// <returns>class HeroSpeAddData</returns>
-             /*
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetBaseAddData", "HeroSpeAddData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial nint GET_BASE_ADD_DATA(); 
+            /*
+           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetBaseAddData", "HeroSpeAddData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+           public partial nint GET_BASE_ADD_DATA(); 
 */
             /// <summary>
             ///   System.String GetExtraAddName()
             /// </summary>
             /// <returns>class System.String</returns>
-             /*
+
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetExtraAddName", "System.String", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial nint GET_EXTRA_ADD_NAME(); 
-*/
+            public partial PMonoString GET_EXTRA_ADD_NAME();
+
         }
     }
 }

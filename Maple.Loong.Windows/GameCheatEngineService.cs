@@ -4,6 +4,7 @@ using Maple.MonoGameAssistant.GameDTO;
 using Maple.MonoGameAssistant.Model;
 using Maple.MonoGameAssistant.Windows.HotKey.HookWindowMessage;
 using Maple.MonoGameAssistant.Windows.Service;
+using Maple.MonoGameAssistant.Windows.UITask;
 using Microsoft.Extensions.Logging;
 using System.Collections.Immutable;
 
@@ -37,8 +38,8 @@ namespace Maple.Loong.Windows
 
         protected override async ValueTask LoadGameDataAsync()
         {
-            //     Cache = await this.MonoTaskAsync(static (p) => new GameReourceCache(p)).ConfigureAwait(false);
-            await this.MonoTaskAsync(static (p, @this) => @this.LoadGameMetadata(), this).ConfigureAwait(false);
+            Cache = await this.UITaskAsync(static (p) => new GameReourceCache(p)).ConfigureAwait(false);
+            //   await this.MonoTaskAsync(static (p, @this) => @this.LoadGameMetadata(), this).ConfigureAwait(false);
 
         }
 
@@ -51,7 +52,7 @@ namespace Maple.Loong.Windows
 
             }
         }
-        private IEnumerable<PMonoClass> EnumSingletonClasses( )
+        private IEnumerable<PMonoClass> EnumSingletonClasses()
         {
             foreach (var image in Context.ImageNames)
             {

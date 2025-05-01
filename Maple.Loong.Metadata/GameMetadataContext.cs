@@ -11,9 +11,22 @@ namespace Maple.Loong.Metadata
 
 
     [ContextMemberMetadata<GameDataController>]
+
+    [ContextMemberMetadata<ItemData>]
+    [ContextMemberMetadata<EquipmentData>]
+    [ContextMemberMetadata<MedFoodData>]
+    [ContextMemberMetadata<BookData>]
+    [ContextMemberMetadata<TreasureData>]
+    [ContextMemberMetadata<MaterialData>]
+    [ContextMemberMetadata<HorseData>]
+
+
+    [ContextMemberMetadata<HeroData>]
+    [ContextMemberMetadata<KungfuSkillData>]
+    [ContextMemberMetadata<HeroTagDataBase>]
     public partial class GameMetadataContext
     {
 
-        
+
     }
 }
