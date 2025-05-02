@@ -24,6 +24,10 @@ namespace Maple.Loong.Metadata
     [ContextMemberMetadata<HeroData>]
     [ContextMemberMetadata<KungfuSkillData>]
     [ContextMemberMetadata<HeroTagDataBase>]
+
+    [ContextMemberMetadata<SkinDataBase>]
+    [ContextMemberMetadata<ForceData>]
+
     public partial class GameMetadataContext
     {
 

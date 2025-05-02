@@ -316,10 +316,10 @@ namespace Maple.Loong.Metadata
             /// class ["mscorlib.dll"."System.Collections.Generic"."List`1"]
             /// </summary>
             /// <returns>class System.Collections.Generic.List<ForceData></returns>
-            /*
-           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("forceDataBase", "System.Collections.Generic.List<ForceData>")]
-           public partial nint FORCE_DATA_BASE { get; set; } 
-*/
+
+            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("forceDataBase", "System.Collections.Generic.List<ForceData>")]
+            public partial SysPtrList<ForceData.Ptr_ForceData> FORCE_DATA_BASE { get; set; }
+
 
             /// <summary>
             /// 0xC0 System.Collections.Generic.List<System.Int32> bigForceIDList
@@ -576,10 +576,10 @@ namespace Maple.Loong.Metadata
             /// class ["mscorlib.dll"."System.Collections.Generic"."List`1"]
             /// </summary>
             /// <returns>class System.Collections.Generic.List<SkinDataBase></returns>
-            /*
-           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("skinDataBase", "System.Collections.Generic.List<SkinDataBase>")]
-           public partial nint SKIN_DATA_BASE { get; set; } 
-*/
+
+            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("skinDataBase", "System.Collections.Generic.List<SkinDataBase>")]
+            public partial SysPtrList<SkinDataBase.Ptr_SkinDataBase> SKIN_DATA_BASE { get; set; }
+
 
             /// <summary>
             /// 0x190 System.Collections.Generic.List<System.Collections.Generic.List<System.Int32>> CheckReplaceSkillIconList

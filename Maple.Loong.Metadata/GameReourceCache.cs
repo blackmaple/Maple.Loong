@@ -28,6 +28,8 @@ namespace Maple.Loong.Metadata
 
 
         public GameValueInfoDTOEX[] Character_Tag { get; }
+        public GameValueInfoDTOEX[] Force_Data { get; }
+        public GameValueInfoDTOEX[] Skin_Data { get; }
 
         public GameReourceCache(GameMetadataContext metadataContext)
         {
@@ -50,8 +52,13 @@ namespace Maple.Loong.Metadata
 
 
             this.Character_Tag = [.. LoadCharacterTags()];
-        }
 
+
+            this.Skin_Data = [.. LoadSkinData()];
+
+            this.Force_Data = [.. LoadForceData()];
+
+        }
 
         IEnumerable<GameInventoryDisplayDTOEX> LoadItems(IEnumerable<ItemData.Ptr_ItemData> ptr_ItemDatas)
         {
@@ -86,7 +93,7 @@ namespace Maple.Loong.Metadata
             }
         }
 
-        public IEnumerable<GameCharacterDisplayDTOEX> LoadCharacters()
+        IEnumerable<GameCharacterDisplayDTOEX> LoadCharacters()
         {
             using (this.Logger.Running())
             {
@@ -119,6 +126,8 @@ namespace Maple.Loong.Metadata
                 }
             }
         }
+
+        [Obsolete("")]
         IEnumerable<GameSkillDisplayDTOEX> LoadSkillList()
         {
             using (this.Logger.Running())
@@ -155,6 +164,48 @@ namespace Maple.Loong.Metadata
             }
         }
 
+
+        IEnumerable<GameValueInfoDTOEX> LoadForceData()
+        {
+            using (this.Logger.Running())
+            {
+                foreach (var item in this.Ptr_GameDataController.FORCE_DATA_BASE.AsEnumerable())
+                {
+                    var id = item.FORCE_ID.ToString();
+                    var name = item.FORCE_NAME.ToString();
+                    var desc = string.Empty;//
+                    var fullName = item.GET_FORCE_NAME().ToString(); ;
+                    var fullDesc = string.Empty;//;
+                    var type = string.Empty;//;
+                    this.Logger.LogInformation("id:{id},name:{name},fullname{fullname},fulldesc:{fulldesc},type:{type}", id, name, fullName, fullDesc, type);
+                    yield return new GameValueInfoDTOEX() { ObjectId = id, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
+                }
+            }
+        }
+
+        IEnumerable<GameValueInfoDTOEX> LoadSkinData()
+        {
+            using (this.Logger.Running())
+            {
+                var syslist = this.Ptr_GameDataController.SKIN_DATA_BASE;
+                if (syslist.IsNull())
+                {
+                    yield break;
+                }
+                foreach (var item in syslist.AsEnumerable())
+                {
+                    var id = item.SKIN_ID.ToString();
+                    var name = item.SKIN_NAME.ToString();
+                    var desc = string.Empty;//
+                    var fullName = string.Empty;//item.().ToString(); ;
+                    var fullDesc = string.Empty;//;
+                    var type = string.Empty;//;
+                    this.Logger.LogInformation("id:{id},name:{name},fullname{fullname},fulldesc:{fulldesc},type:{type}", id, name, fullName, fullDesc, type);
+                    yield return new GameValueInfoDTOEX() { ObjectId = id, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
+                }
+
+            }
+        }
     }
 
 
