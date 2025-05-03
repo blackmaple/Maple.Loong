@@ -5,7 +5,7 @@ namespace Maple.Loong.Metadata
     /// </summary>
     public enum ItemListType : System.Int32
     {
-        None = 0xFFFFFFFF,
+        None = -1,
         EquipType = 0x00000000,
         MedType = 0x00000001,
         FoodType = 0x00000002,

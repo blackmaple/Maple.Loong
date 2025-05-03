@@ -9,6 +9,10 @@ namespace Maple.Loong.Metadata
 
     [ContextParentMetadata<ContextMetadataCollector>(true)]
 
+    [ContextMemberMetadata<GlobalData>]
+    [ContextMemberMetadata<GameController>]
+    [ContextMemberMetadata<WorldData>]
+    [ContextMemberMetadata<TimeData>]
 
     [ContextMemberMetadata<GameDataController>]
 
@@ -22,11 +26,20 @@ namespace Maple.Loong.Metadata
 
 
     [ContextMemberMetadata<HeroData>]
+
+    [ContextMemberMetadata<ItemListData>]
     [ContextMemberMetadata<KungfuSkillData>]
+    [ContextMemberMetadata<KungfuSkillLvData>]
+
     [ContextMemberMetadata<HeroTagDataBase>]
+    [ContextMemberMetadata<HeroTagData>]
 
     [ContextMemberMetadata<SkinDataBase>]
+
+    
     [ContextMemberMetadata<ForceData>]
+
+
 
     public partial class GameMetadataContext
     {

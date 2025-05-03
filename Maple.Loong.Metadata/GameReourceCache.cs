@@ -68,18 +68,18 @@ namespace Maple.Loong.Metadata
                 foreach (var item in ptr_ItemDatas)
                 {
                     var id = item.ITEM_ID.ToString();
-                    var checkName = item.CHECK_NAME.ToString();
-                    var name = item.NAME.ToString();
-                    var desc = item.DESCRIBE.ToString();
+                    //var checkName = item.CHECK_NAME.ToString();
+                    //var name = item.NAME.ToString();
+                    //var desc = item.DESCRIBE.ToString();
 
                     var fullName = item.GET_NAME(false).ToString();
                     var fullDesc = item.GET_ITEM_TYPE_DESCRIBE(false).ToString();
                     var type = item.TYPE;
 
-                    var subType = item.SUB_TYPE;
+                    //var subType = item.SUB_TYPE;
 
-                    this.Logger.LogInformation("Id:{id},checkName:{checkName},name:{name},desc:{desc},fullname:{fullname},fulldesc:{fulldesc},type:{type},subType:{subType}",
-                        id, checkName, name, desc, fullName, fullDesc, type, subType);
+                    this.Logger.LogInformation("Id:{id},fullname:{fullname},fulldesc:{fulldesc},type:{type}",
+                        id, fullName, fullDesc, type);
 
                     yield return new GameInventoryDisplayDTOEX()
                     {
@@ -103,7 +103,7 @@ namespace Maple.Loong.Metadata
                     var hero_id = character.HERO_ID.ToString();
                     var name = character.HERO_NAME.ToString();
                     this.Logger.LogInformation("heroid:{id},name:{name}", hero_id, name);
-                    yield return new GameCharacterDisplayDTOEX() { ObjectId = hero_id, DisplayName = name };
+                    yield return new GameCharacterDisplayDTOEX() {ObjectPointer= character.Ptr, ObjectId = hero_id, DisplayName = name };
                 }
             }
 
@@ -116,13 +116,13 @@ namespace Maple.Loong.Metadata
                 foreach (var skill in ptr_KungfuSkillDatas.AsEnumerable())
                 {
                     var skillId = skill.SKILL_ID.ToString();
-                    var name = skill.NAME.ToString();
-                    var desc = skill.DESCRIBE.ToString();
+                 //   var name = skill.NAME.ToString();
+                    var fullDesc = skill.DESCRIBE.ToString();
                     var fullName = skill.GET_NAME(false).ToString();
-                    var fullDesc = string.Empty;// skill.TYPE_DESCRIBE().ToString();
+                    //var fullDesc = string.Empty;// skill.TYPE_DESCRIBE().ToString();
                     var type = skill.TYPE.ToString();
-                    this.Logger.LogInformation("skillid:{id},name:{name} desc:{desc},fullname{fullname},fulldesc:{fulldesc},type:{type}", skillId, name, desc, fullName, fullDesc, type);
-                    yield return new GameSkillDisplayDTOEX() { ObjectId = skillId, DisplayName = name, DisplayDesc = fullDesc, DisplayCategory = type, };
+                    this.Logger.LogInformation("skillid:{id},fullname:{fullname},fulldesc:{fulldesc},type:{type}", skillId,  fullName, fullDesc, type);
+                    yield return new GameSkillDisplayDTOEX() { ObjectPointer = skill.Ptr, ObjectId = skillId, DisplayName = fullName, DisplayDesc = fullDesc, DisplayCategory = type, };
                 }
             }
         }
@@ -152,14 +152,13 @@ namespace Maple.Loong.Metadata
             {
                 foreach (var tag in this.Ptr_GameDataController.HERO_TAG_DATA_BASE.AsEnumerable())
                 {
-                    var tagId = tag.VALUE.ToString();
-                    var name = tag.NAME.ToString();
+                     var name = tag.NAME.ToString();
 
                     var fullName = tag.GET_NAME().ToString();
                     var fullDesc = tag.GET_DESCRIBE(false).ToString();
                     var type = tag.CATEGORY.ToString();
-                    this.Logger.LogInformation("tagid:{id},name:{name},fullname{fullname},fulldesc:{fulldesc},type:{type}", tagId, name, fullName, fullDesc, type);
-                    yield return new GameValueInfoDTOEX() { ObjectId = tagId, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
+                    this.Logger.LogInformation("name:{name},fullname{fullname},fulldesc:{fulldesc},type:{type}", name, fullName, fullDesc, type);
+                    yield return new GameValueInfoDTOEX() {ObjectPointer = tag.Ptr, ObjectId = name!, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
                 }
             }
         }
@@ -178,7 +177,7 @@ namespace Maple.Loong.Metadata
                     var fullDesc = string.Empty;//;
                     var type = string.Empty;//;
                     this.Logger.LogInformation("id:{id},name:{name},fullname{fullname},fulldesc:{fulldesc},type:{type}", id, name, fullName, fullDesc, type);
-                    yield return new GameValueInfoDTOEX() { ObjectId = id, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
+                    yield return new GameValueInfoDTOEX() {ObjectPointer = item.Ptr, ObjectId = id, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
                 }
             }
         }
@@ -187,12 +186,7 @@ namespace Maple.Loong.Metadata
         {
             using (this.Logger.Running())
             {
-                var syslist = this.Ptr_GameDataController.SKIN_DATA_BASE;
-                if (syslist.IsNull())
-                {
-                    yield break;
-                }
-                foreach (var item in syslist.AsEnumerable())
+                foreach (var item in this.Ptr_GameDataController.SKIN_DATA_BASE.AsEnumerable())
                 {
                     var id = item.SKIN_ID.ToString();
                     var name = item.SKIN_NAME.ToString();
@@ -201,7 +195,7 @@ namespace Maple.Loong.Metadata
                     var fullDesc = string.Empty;//;
                     var type = string.Empty;//;
                     this.Logger.LogInformation("id:{id},name:{name},fullname{fullname},fulldesc:{fulldesc},type:{type}", id, name, fullName, fullDesc, type);
-                    yield return new GameValueInfoDTOEX() { ObjectId = id, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
+                    yield return new GameValueInfoDTOEX() { ObjectPointer = item.Ptr, ObjectId = id, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
                 }
 
             }
@@ -211,29 +205,29 @@ namespace Maple.Loong.Metadata
 
     public class GameInventoryDisplayDTOEX : GameInventoryDisplayDTO
     {
-        public nint ObjectPointer { get; set; }
+        public required nint ObjectPointer { get; set; }
     }
 
     public class GameSkillDisplayDTOEX : GameSkillDisplayDTO
     {
-        public nint ObjectPointer { get; set; }
+        public required nint ObjectPointer { get; set; }
 
     }
 
     public class GameMonsterDisplayDTOEX : GameMonsterDisplayDTO
     {
-        public nint ObjectPointer { get; set; }
+        public required nint ObjectPointer { get; set; }
 
     }
 
     public class GameCharacterDisplayDTOEX : GameCharacterDisplayDTO
     {
-        public nint ObjectPointer { get; set; }
+        public required nint ObjectPointer { get; set; }
     }
 
     public class GameValueInfoDTOEX : GameValueInfoDTO
     {
-        public nint ObjectPointer { get; set; }
+        public required nint ObjectPointer { get; set; }
 
         //  public DictIndex Index { get; set; }
         public float Min { set; get; }

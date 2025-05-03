@@ -1,3 +1,5 @@
+using Maple.MonoGameAssistant.MetadataCollections;
+
 namespace Maple.Loong.Metadata
 {
     /// <summary>
@@ -51,10 +53,10 @@ namespace Maple.Loong.Metadata
             /// struct ["mscorlib.dll"."System"."Int32"]
             /// </summary>
             /// <returns>struct System.Int32</returns>
-             /*
+             
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("money", "System.Int32")]
             public partial System.Int32 MONEY { get; set; } 
-*/
+
 
             /// <summary>
             /// 0x1C System.Single weight
@@ -71,20 +73,20 @@ namespace Maple.Loong.Metadata
             /// struct ["mscorlib.dll"."System"."Single"]
             /// </summary>
             /// <returns>struct System.Single</returns>
-             /*
+             
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("maxWeight", "System.Single")]
             public partial System.Single MAX_WEIGHT { get; set; } 
-*/
+
 
             /// <summary>
             /// 0x28 System.Collections.Generic.List<ItemData> allItem
             /// class ["mscorlib.dll"."System.Collections.Generic"."List`1"]
             /// </summary>
             /// <returns>class System.Collections.Generic.List<ItemData></returns>
-             /*
+             
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("allItem", "System.Collections.Generic.List<ItemData>")]
-            public partial nint ALL_ITEM { get; set; } 
-*/
+            public partial SysPtrList<ItemData.Ptr_ItemData> ALL_ITEM { get;  } 
+
 
             /// <summary>
             /// 0x30 System.Collections.Generic.List<System.Collections.Generic.List<ItemData>> itemTypeList
