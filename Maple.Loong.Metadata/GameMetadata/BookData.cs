@@ -17,7 +17,7 @@ namespace Maple.Loong.Metadata
 
             public static implicit operator Ptr_BookData(System.IntPtr ptr) => new Ptr_BookData(ptr);
             public static implicit operator System.IntPtr(Ptr_BookData ptr) => ptr.m_Pointer;
-            public static implicit operator bool (Ptr_BookData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
+            public static implicit operator bool(Ptr_BookData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
         }
 
         /// <summary>
@@ -45,25 +45,25 @@ namespace Maple.Loong.Metadata
             ///   System.Void .ctor()
             /// </summary>
             /// <returns>struct System.Void</returns>
-             /*
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial void CTOR(); 
+            /*
+           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+           public partial void CTOR(); 
 */
             /// <summary>
             ///   KungfuSkillData DataBase()
             /// </summary>
             /// <returns>class KungfuSkillData</returns>
-             /*
+
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("DataBase", "KungfuSkillData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial nint DATA_BASE(); 
-*/
+            public partial KungfuSkillData.Ptr_KungfuSkillData DATA_BASE();
+
             /// <summary>
             ///   System.Int32 ReadDayCost()
             /// </summary>
             /// <returns>struct System.Int32</returns>
-             /*
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("ReadDayCost", "System.Int32", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial System.Int32 READ_DAY_COST(); 
+            /*
+           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("ReadDayCost", "System.Int32", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+           public partial System.Int32 READ_DAY_COST(); 
 */
         }
     }

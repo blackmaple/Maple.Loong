@@ -18,7 +18,10 @@ namespace Maple.Loong.Metadata
 
     [ContextMemberMetadata<ItemData>]
     [ContextMemberMetadata<EquipmentData>]
+
     [ContextMemberMetadata<MedFoodData>]
+    [ContextMemberMetadata<ChangeHeroStateData>]
+
     [ContextMemberMetadata<BookData>]
     [ContextMemberMetadata<TreasureData>]
     [ContextMemberMetadata<MaterialData>]
@@ -36,7 +39,7 @@ namespace Maple.Loong.Metadata
 
     [ContextMemberMetadata<SkinDataBase>]
 
-    
+
     [ContextMemberMetadata<ForceData>]
 
 

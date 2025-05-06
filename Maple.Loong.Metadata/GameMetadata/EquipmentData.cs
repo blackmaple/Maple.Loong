@@ -135,10 +135,10 @@ namespace Maple.Loong.Metadata
             ///   HeroSpeAddData GetBaseAddData()
             /// </summary>
             /// <returns>class HeroSpeAddData</returns>
-            /*
-           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetBaseAddData", "HeroSpeAddData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-           public partial nint GET_BASE_ADD_DATA(); 
-*/
+
+            //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetBaseAddData", "HeroSpeAddData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+            //public partial HeroSpeAddData.Ptr_HeroSpeAddData GET_BASE_ADD_DATA();
+
             /// <summary>
             ///   System.String GetExtraAddName()
             /// </summary>

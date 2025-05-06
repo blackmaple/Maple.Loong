@@ -104,9 +104,43 @@ namespace Maple.Loong.Windows
             throw new NotImplementedException();
         }
 
+        private Task<GameCheatEngine> GetGameCheatEngine()
+        {
+            return this.MonoTaskAsync((p, cache) => GameCheatEngine.Create(cache), this.Cache);
+        }
+
+        public sealed override ValueTask<GameCurrencyDisplayDTO[]> GetListCurrencyDisplayAsync()
+        {
+            return base.GetListCurrencyDisplayAsync();
+        }
 
 
+        public sealed override ValueTask<GameInventoryDisplayDTO[]> GetListInventoryDisplayAsync()
+        {
+            return ValueTask.FromResult<GameInventoryDisplayDTO[]>(this.Cache.ALL_ITEM);
+        }
+        public sealed override async ValueTask<GameInventoryInfoDTO> GetInventoryInfoAsync(GameInventoryObjectDTO inventoryObjectDTO)
+        {
+            var gameCheatEngine = await this.GetGameCheatEngine().ConfigureAwait(false);
+            return await this.MonoTaskAsync((p, args) => args.gameCheatEngine.GetGameInventoryInfo(args.inventoryObjectDTO), (gameCheatEngine, inventoryObjectDTO)).ConfigureAwait(false);
+        }
+        public sealed override async ValueTask<GameInventoryInfoDTO> UpdateInventoryInfoAsync(GameInventoryModifyDTO inventoryObjectDTO)
+        {
+            var gameCheatEngine = await this.GetGameCheatEngine().ConfigureAwait(false);
+            return await this.MonoTaskAsync((p, args) => args.gameCheatEngine.UpdateGameInventoryInfo(args.inventoryObjectDTO), (gameCheatEngine, inventoryObjectDTO)).ConfigureAwait(false);
+        }
 
+        public sealed override async ValueTask<GameCharacterDisplayDTO[]> GetListCharacterDisplayAsync()
+        {
+            var gameCheatEngine = await this.GetGameCheatEngine().ConfigureAwait(false);
+            return await this.MonoTaskAsync((p, cheat) => cheat.GetGameCharacters().ToArray(), gameCheatEngine).ConfigureAwait(false);
+        }
+
+        public sealed override async ValueTask<GameCharacterStatusDTO> GetCharacterStatusAsync(GameCharacterObjectDTO characterObjectDTO)
+        {
+            var cheat = await this.GetGameCheatEngine().ConfigureAwait(false);
+            return await this.MonoTaskAsync((p, args) => args.cheat.GetGameCharacterStatus(args.characterObjectDTO), (cheat, characterObjectDTO)).ConfigureAwait(false);
+        }
 
     }
 

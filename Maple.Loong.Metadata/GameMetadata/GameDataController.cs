@@ -447,8 +447,8 @@ namespace Maple.Loong.Metadata
             /// </summary>
             /// <returns>class System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<KungfuSkillData>>></returns>
 
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("kungfuSkillDataList", "System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<KungfuSkillData>>>")]
-            public partial SysPtrList<SysPtrList<KungfuSkillData.Ptr_KungfuSkillData>> KUNGFU_SKILL_DATA_LIST { get; set; }
+            //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("kungfuSkillDataList", "System.Collections.Generic.List<System.Collections.Generic.List<System.Collections.Generic.List<KungfuSkillData>>>")]
+            //public partial SysPtrList<SysPtrList<KungfuSkillData.Ptr_KungfuSkillData>> KUNGFU_SKILL_DATA_LIST { get; set; }
 
 
             /// <summary>

@@ -17,7 +17,7 @@ namespace Maple.Loong.Metadata
 
             public static implicit operator Ptr_MedFoodData(System.IntPtr ptr) => new Ptr_MedFoodData(ptr);
             public static implicit operator System.IntPtr(Ptr_MedFoodData ptr) => ptr.m_Pointer;
-            public static implicit operator bool (Ptr_MedFoodData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
+            public static implicit operator bool(Ptr_MedFoodData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
         }
 
         /// <summary>
@@ -75,18 +75,18 @@ namespace Maple.Loong.Metadata
             ///   System.Void .ctor()
             /// </summary>
             /// <returns>struct System.Void</returns>
-             /*
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial void CTOR(); 
+            /*
+           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+           public partial void CTOR(); 
 */
             /// <summary>
             ///   ChangeHeroStateData GetChangeHeroStateData()
             /// </summary>
             /// <returns>class ChangeHeroStateData</returns>
-             /*
+
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetChangeHeroStateData", "ChangeHeroStateData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial nint GET_CHANGE_HERO_STATE_DATA(); 
-*/
+            public partial ChangeHeroStateData.Ptr_ChangeHeroStateData GET_CHANGE_HERO_STATE_DATA();
+
         }
     }
 }

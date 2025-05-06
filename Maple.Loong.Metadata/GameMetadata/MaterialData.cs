@@ -17,7 +17,7 @@ namespace Maple.Loong.Metadata
 
             public static implicit operator Ptr_MaterialData(System.IntPtr ptr) => new Ptr_MaterialData(ptr);
             public static implicit operator System.IntPtr(Ptr_MaterialData ptr) => ptr.m_Pointer;
-            public static implicit operator bool (Ptr_MaterialData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
+            public static implicit operator bool(Ptr_MaterialData ptr) => ptr.m_Pointer != System.IntPtr.Zero;
         }
 
         /// <summary>
@@ -30,10 +30,10 @@ namespace Maple.Loong.Metadata
             /// class ["Assembly-CSharp.dll".""."HeroSpeAddData"]
             /// </summary>
             /// <returns>class HeroSpeAddData</returns>
-             /*
+
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("extraAddData", "HeroSpeAddData")]
-            public partial nint EXTRA_ADD_DATA { get; set; } 
-*/
+            public partial HeroSpeAddData.Ptr_HeroSpeAddData EXTRA_ADD_DATA { get; set; }
+
         }
 
         /// <summary>
