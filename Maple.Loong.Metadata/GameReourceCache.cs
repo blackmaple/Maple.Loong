@@ -30,7 +30,6 @@ namespace Maple.Loong.Metadata
 
         public GameValueInfoDTOEX[] Character_Tag { get; }
         public GameValueInfoDTOEX[] Force_Data { get; }
-        public GameValueInfoDTOEX[] Skin_Data { get; }
 
         public GameReourceCache(GameMetadataContext metadataContext)
         {
@@ -49,6 +48,8 @@ namespace Maple.Loong.Metadata
 
                 .. LoadItems(this.Ptr_GameDataController.MED_DATA_BASE.AsEnumerable(), nameof(Ptr_GameDataController.MED_DATA_BASE)),
                 .. LoadItems(this.Ptr_GameDataController.HORSE_DATA_BASE.AsEnumerable(), nameof(Ptr_GameDataController.HORSE_DATA_BASE)),
+
+                ..LoadSkinData()
                 ];
 
 
@@ -65,7 +66,7 @@ namespace Maple.Loong.Metadata
             this.Character_Tag = [.. LoadCharacterTags()];
 
 
-            this.Skin_Data = [.. LoadSkinData()];
+
 
             this.Force_Data = [.. LoadForceData()];
 
@@ -235,20 +236,18 @@ namespace Maple.Loong.Metadata
             }
         }
 
-        IEnumerable<GameValueInfoDTOEX> LoadSkinData()
+        IEnumerable<GameInventoryDisplayDTOEX> LoadSkinData()
         {
             using (this.Logger.Running())
             {
                 foreach (var item in this.Ptr_GameDataController.SKIN_DATA_BASE.AsEnumerable())
                 {
                     var id = item.SKIN_ID.ToString();
-                    var name = item.SKIN_NAME.ToString();
-                    var desc = string.Empty;//
-                    var fullName = string.Empty;//item.().ToString(); ;
-                    var fullDesc = string.Empty;//;
-                    var type = string.Empty;//;
-                    this.Logger.LogInformation("id:{id},name:{name},fullname{fullname},fulldesc:{fulldesc},type:{type}", id, name, fullName, fullDesc, type);
-                    yield return new GameValueInfoDTOEX() { ObjectPointer = item.Ptr, ObjectId = id, DisplayName = name,/* DisplayDesc = fullDesc, DisplayCategory = type,*/ };
+                    var fullName = item.SKIN_NAME.ToString();
+                    var fullDesc = item.GET_SKIN_FULL_NAME(0, false).ToString();
+                    var type = nameof(Ptr_GameDataController.SKIN_DATA_BASE);
+                    this.Logger.LogInformation("id:{id},fullname{fullname},fulldesc:{fulldesc},type:{type}", id, fullName, fullDesc, type);
+                    yield return new GameInventoryDisplayDTOEX() { ObjectPointer = item.Ptr, ObjectId = id, DisplayName = fullName, DisplayDesc = fullDesc, DisplayCategory = type, };
                 }
 
             }

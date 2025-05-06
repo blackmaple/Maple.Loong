@@ -52,10 +52,10 @@ namespace Maple.Loong.Metadata
             /// class ["Assembly-CSharp.dll".""."HeroSpeAddData"]
             /// </summary>
             /// <returns>class HeroSpeAddData</returns>
-            /*
-           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("skinSpeAdd", "HeroSpeAddData")]
-           public partial nint SKIN_SPE_ADD { get; set; } 
-*/
+            
+           //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("skinSpeAdd", "HeroSpeAddData")]
+           //public partial HeroSpeAddData.Ptr_HeroSpeAddData SKIN_SPE_ADD { get; set; } 
+
         }
 
         /// <summary>
@@ -67,9 +67,9 @@ namespace Maple.Loong.Metadata
             ///   System.Void .ctor()
             /// </summary>
             /// <returns>struct System.Void</returns>
-             /*
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            public partial void CTOR(); 
+            /*
+           [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute(".ctor", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+           public partial void CTOR(); 
 */
             /// <summary>
             ///   System.String GetSkinFullName(System.Int32 _skinLv, System.Boolean changeLine)
@@ -77,22 +77,22 @@ namespace Maple.Loong.Metadata
             /// <param name = "_skinLv">struct System.Int32</param>
             /// <param name = "changeLine">struct System.Boolean</param>
             /// <returns>class System.String</returns>
-             /*
+
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetSkinFullName", "System.String", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodParameterMetadataAttribute("System.Int32", 0)]
             [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodParameterMetadataAttribute("System.Boolean", 1)]
-            public partial nint GET_SKIN_FULL_NAME(System.Int32 _skinLv, System.Boolean changeLine); 
-*/
+            public partial PMonoString GET_SKIN_FULL_NAME(System.Int32 _skinLv, System.Boolean changeLine);
+
             /// <summary>
             ///   HeroSpeAddData GetSkinSpeAdd(System.Int32 lv)
             /// </summary>
             /// <param name = "lv">struct System.Int32</param>
             /// <returns>class HeroSpeAddData</returns>
-             /*
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetSkinSpeAdd", "HeroSpeAddData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
-            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodParameterMetadataAttribute("System.Int32", 0)]
-            public partial nint GET_SKIN_SPE_ADD(System.Int32 lv); 
-*/
+
+            //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("GetSkinSpeAdd", "HeroSpeAddData", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
+            //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodParameterMetadataAttribute("System.Int32", 0)]
+            //public partial HeroSpeAddData.Ptr_HeroSpeAddData GET_SKIN_SPE_ADD(System.Int32 lv); 
+
         }
     }
 }
