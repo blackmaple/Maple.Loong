@@ -3,6 +3,7 @@ using Maple.MonoGameAssistant.GameDTO;
 using Maple.MonoGameAssistant.MetadataCollections;
 using Maple.MonoGameAssistant.MetadataExtensions.MetadataCollector;
 using Microsoft.Extensions.Logging;
+using System.Numerics;
 using System.Runtime.CompilerServices;
 using static Maple.Loong.Metadata.GameController;
 
@@ -78,7 +79,10 @@ namespace Maple.Loong.Metadata
             {
                 return GameException.Throw<GameInventoryInfoDTO>("NOT FOUND");
             }
-
+            if (inventoryModifyDTO.InventoryCategory == nameof(SkinDataBase))
+            {
+                
+            }
             var player = this.Ptr_WorldData.PLAYER();
             var oldCount = GetItemCount(player.ITEM_LIST_DATA, itemPtr.ObjectPointer);
             var newCount = inventoryModifyDTO.InventoryCount;
@@ -89,6 +93,8 @@ namespace Maple.Loong.Metadata
             }
             var currCount = GetItemCount(player.ITEM_LIST_DATA, itemPtr.ObjectPointer);
             return new GameInventoryInfoDTO() { ObjectId = inventoryModifyDTO.InventoryObject, InventoryCount = currCount };
+
+
         }
 
 
@@ -207,6 +213,12 @@ namespace Maple.Loong.Metadata
             var t = ptr_HeroData.HERO_TAG_POINT;
             yield return new GameSwitchDisplayDTO() { ObjectId = nameof(ptr_HeroData.HERO_TAG_POINT), DisplayName = nameof(ptr_HeroData.HERO_TAG_POINT), ContentValue = t.ToString(), UIType = (int)EnumGameSwitchUIType.TextEditor };
 
+            var f = ptr_HeroData.FAME;
+            yield return new GameSwitchDisplayDTO() { ObjectId = nameof(ptr_HeroData.FAME), DisplayName = nameof(ptr_HeroData.FAME), ContentValue = f.ToString(), UIType = (int)EnumGameSwitchUIType.TextEditor };
+
+            var bf = ptr_HeroData.BAD_FAME;
+            yield return new GameSwitchDisplayDTO() { ObjectId = nameof(ptr_HeroData.BAD_FAME), DisplayName = nameof(ptr_HeroData.BAD_FAME), ContentValue = bf.ToString(), UIType = (int)EnumGameSwitchUIType.TextEditor };
+
 
             var tags = ptr_HeroData.HERO_TAG_DATA.AsReadOnlySpan().ToArray();
             foreach (var tag in this.ReourceCache.Character_Tag)
@@ -259,6 +271,12 @@ namespace Maple.Loong.Metadata
             }
             return false;
         }
+
+        public IEnumerable<GameSkillInfoDTO> GetGameCharacterSkillImp(HeroData.Ptr_HeroData ptr_HeroData)
+        { 
+        
+        }
+
     }
 
     public enum EnumHeroType

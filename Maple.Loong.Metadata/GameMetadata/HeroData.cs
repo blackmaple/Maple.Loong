@@ -896,7 +896,7 @@ namespace Maple.Loong.Metadata
             /// <returns>struct System.Single</returns>
 
             //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("fame", "System.Single")]
-            //public partial ref System.Single FAME { get; } 
+            public partial ref System.Single FAME { get; } 
 
 
             /// <summary>
@@ -906,7 +906,7 @@ namespace Maple.Loong.Metadata
             /// <returns>struct System.Single</returns>
 
             //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("badFame", "System.Single")]
-            //public partial ref System.Single BAD_FAME { get; } 
+            public partial ref System.Single BAD_FAME { get; } 
 
 
             /// <summary>
@@ -1154,10 +1154,10 @@ namespace Maple.Loong.Metadata
             /// class ["mscorlib.dll"."System.Collections.Generic"."List`1"]
             /// </summary>
             /// <returns>class System.Collections.Generic.List<System.Int32></returns>
-            /*
+            
            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("skillCount", "System.Collections.Generic.List<System.Int32>")]
-           public partial ref nint SKILL_COUNT { get; } 
-*/
+           public partial SysPtrList<int> SKILL_COUNT { get; } 
+
 
             /// <summary>
             /// 0x248 System.Collections.Generic.List<KungfuSkillLvData> kungfuSkills
@@ -1244,10 +1244,10 @@ namespace Maple.Loong.Metadata
             /// class ["mscorlib.dll"."System.Collections.Generic"."List`1"]
             /// </summary>
             /// <returns>class System.Collections.Generic.List<KungfuSkillLvData></returns>
-            /*
+            
            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("attackSkills", "System.Collections.Generic.List<KungfuSkillLvData>")]
-           public partial ref nint ATTACK_SKILLS { get; } 
-*/
+           public partial SysPtrList<KungfuSkillLvData.Ptr_KungfuSkillLvData> ATTACK_SKILLS { get; } 
+
 
             /// <summary>
             /// 0x290 System.Int32 nowActiveSkill
@@ -4847,12 +4847,12 @@ namespace Maple.Loong.Metadata
             /// <param name = "_skinID">struct System.Int32</param>
             /// <param name = "_skinLv">struct System.Int32</param>
             /// <returns>struct System.Void</returns>
-            /*
+            
            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodMetadataAttribute("SetSkin", "System.Void", CallConvs = [typeof(System.Runtime.CompilerServices.CallConvSuppressGCTransition)])]
            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodParameterMetadataAttribute("System.Int32", 0)]
            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassMethodParameterMetadataAttribute("System.Int32", 1)]
            public partial void SET_SKIN(System.Int32 _skinID, System.Int32 _skinLv); 
-*/
+
             /// <summary>
             ///   System.Boolean StuffStoppable()
             /// </summary>

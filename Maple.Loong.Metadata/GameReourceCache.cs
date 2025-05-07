@@ -181,25 +181,6 @@ namespace Maple.Loong.Metadata
             }
         }
 
-        //[Obsolete("")]
-        //IEnumerable<GameSkillDisplayDTOEX> LoadSkillList()
-        //{
-        //    using (this.Logger.Running())
-        //    {
-        //        foreach (var database in this.Ptr_GameDataController.KUNGFU_SKILL_DATA_LIST.AsEnumerable())
-        //        {
-        //            if (database.IsNotNull())
-        //            {
-        //                foreach (var skill in LoadSkills(database.AsEnumerable()))
-        //                {
-        //                    yield return skill;
-        //                }
-        //            }
-
-        //        }
-        //    }
-        //}
-
         IEnumerable<GameValueInfoDTOEX> LoadCharacterTags()
         {
             using (this.Logger.Running())
