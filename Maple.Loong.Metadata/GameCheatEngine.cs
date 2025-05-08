@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using static Maple.Loong.Metadata.GameController;
+using static Maple.Loong.Metadata.GameDataController;
 
 namespace Maple.Loong.Metadata
 {
@@ -79,11 +80,16 @@ namespace Maple.Loong.Metadata
             {
                 return GameException.Throw<GameInventoryInfoDTO>("NOT FOUND");
             }
-            if (inventoryModifyDTO.InventoryCategory == nameof(SkinDataBase))
-            {
-                
-            }
             var player = this.Ptr_WorldData.PLAYER();
+
+            if (inventoryModifyDTO.InventoryCategory == nameof(Ptr_GameDataController.SKIN_DATA_BASE))
+            {
+                var ptr_skin =new  SkinDataBase.Ptr_SkinDataBase(itemPtr.ObjectPointer);
+                player.SET_SKIN(ptr_skin.SKIN_ID, 1);
+                return new GameInventoryInfoDTO() { ObjectId = inventoryModifyDTO.InventoryObject, InventoryCount = 1 };
+
+            }
+
             var oldCount = GetItemCount(player.ITEM_LIST_DATA, itemPtr.ObjectPointer);
             var newCount = inventoryModifyDTO.InventoryCount;
             var diff = newCount - oldCount;
@@ -272,10 +278,10 @@ namespace Maple.Loong.Metadata
             return false;
         }
 
-        public IEnumerable<GameSkillInfoDTO> GetGameCharacterSkillImp(HeroData.Ptr_HeroData ptr_HeroData)
-        { 
+        //public IEnumerable<GameSkillInfoDTO> GetGameCharacterSkillImp(HeroData.Ptr_HeroData ptr_HeroData)
+        //{ 
         
-        }
+        //}
 
     }
 

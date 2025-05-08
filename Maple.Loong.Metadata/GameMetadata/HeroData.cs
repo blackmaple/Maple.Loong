@@ -895,7 +895,7 @@ namespace Maple.Loong.Metadata
             /// </summary>
             /// <returns>struct System.Single</returns>
 
-            //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("fame", "System.Single")]
+            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("fame", "System.Single")]
             public partial ref System.Single FAME { get; } 
 
 
@@ -905,7 +905,7 @@ namespace Maple.Loong.Metadata
             /// </summary>
             /// <returns>struct System.Single</returns>
 
-            //[Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("badFame", "System.Single")]
+            [Maple.MonoGameAssistant.MetadataExtensions.MetadataGenerator.ClassPropertyMetadataAttribute("badFame", "System.Single")]
             public partial ref System.Single BAD_FAME { get; } 
 
 
